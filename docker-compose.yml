@@ -1,0 +1,29 @@
+services:
+  github-readme-stats:
+    # Consider using a tagged release instead of "latest"
+    image: ghcr.io/utkuozdemir/github-readme-stats-selfhosted:latest
+    container_name: github-readme-stats
+    restart: unless-stopped
+    ports:
+      # Map host port 9000 to container port 9000 (Default for this project)
+      # Change the first number if you want to expose it on a different port (e.g., "80:9000")
+      - "9000:9000"
+    environment:
+      # Required: At least one GitHub Personal Access Token
+      - PAT_1=your_github_pat_here
+
+      # Strongly Recommended: Prevent abuse by allowing only specific users
+      # - WHITELIST=your_username
+
+      # Optional: Add more tokens to avoid rate limiting
+      # - PAT_2=another_token_here
+      # - PAT_3=and_another_one
+
+      # Optional: Custom repo/branch configuration
+      # - GITHUB_README_STATS_REPO=https://github.com/anuraghazra/github-readme-stats.git
+      # - GITHUB_README_STATS_REF=master
+
+      # Optional: Cache control (if your wrapper supports it)
+      # - CACHE_SECONDS=7200
+
+      # See other available env vars: https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-environment-variables
