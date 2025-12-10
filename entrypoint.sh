@@ -24,7 +24,7 @@ git checkout FETCH_HEAD
 echo "Moving express dependency from devDependencies to dependencies in package.json..."
 
 # Use jq to move express from devDependencies to dependencies
-jq '.dependencies.express = .devDependencies.express | del(.devDependencies.express)' package.json >package.tmp.json
+jq '.dependencies.express = .devDependencies.express | del(.devDependencies.express)' package.json > package.tmp.json
 mv package.tmp.json package.json
 
 if [ "$fix_audit" = "true" ]; then
@@ -36,4 +36,17 @@ echo "Installing production dependencies..."
 npm install
 
 echo "Starting the server..."
-node express.js
+
+cleanup() {
+    echo "Container stopping, shutting down Node.js..."
+    kill -TERM "$pid" 2>/dev/null
+    wait "$pid" || true
+    exit 0
+}
+
+trap cleanup SIGTERM SIGINT
+
+node express.js &
+pid=$!
+
+wait "$pid"
