@@ -27,3 +27,6 @@ services:
       # - CACHE_SECONDS=7200
 
       # See other available env vars: https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-environment-variables
+      - FETCH_MULTI_PAGE_STARS=true
+    security_opt:
+      - no-new-privileges:true
