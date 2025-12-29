@@ -53,7 +53,7 @@ docker compose up -d
 
 ### Running on Kubernetes
 
-For Kubernetes, we recommend using the [bjw-s app-template](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/app-template) Helm chart.
+For Kubernetes, we recommend using the [bjw-s app-template](https://github.com/bjw-s-labs/helm-charts/tree/main/charts/other/app-template) Helm chart.
 You can find the full documentation for the chart [here](https://bjw-s-labs.github.io/helm-charts/docs/app-template/).
 
 1. Add the Helm repository:
