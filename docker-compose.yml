@@ -2,6 +2,8 @@ services:
   github-readme-stats:
     # Consider using a tagged release instead of "latest"
     image: ghcr.io/utkuozdemir/github-readme-stats-selfhosted:latest
+    build:
+      context: .
     container_name: github-readme-stats
     restart: unless-stopped
     ports:
@@ -27,3 +29,6 @@ services:
       # - CACHE_SECONDS=7200
 
       # See other available env vars: https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-environment-variables
+      - FETCH_MULTI_PAGE_STARS=true
+    security_opt:
+      - no-new-privileges:true

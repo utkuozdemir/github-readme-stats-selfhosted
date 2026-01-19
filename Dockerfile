@@ -4,7 +4,7 @@ RUN apk add --no-cache git jq bash tini && npm install -g npm@11.7.0
 
 # Create the working directory and set permissions
 WORKDIR /repo
-RUN chown nobody:nobody /repo
+RUN chown -R nobody:nobody /repo
 
 COPY entrypoint.sh /entrypoint.sh
 
