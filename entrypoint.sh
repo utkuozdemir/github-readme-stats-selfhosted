@@ -36,8 +36,7 @@ fi
 
 echo "Installing production dependencies..."
 npm install
-
-echo "Starting the server..."
+echo "Done with installation"
 
 cleanup() {
     echo "Container stopping, shutting down Node.js..."
@@ -48,6 +47,7 @@ cleanup() {
 
 trap cleanup SIGTERM SIGINT
 
+echo "Starting the server..."
 node express.js &
 pid=$!
 
