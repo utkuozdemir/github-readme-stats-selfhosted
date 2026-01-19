@@ -15,7 +15,8 @@ echo "Cloning repository $repo (ref: $ref)..."
 
 mkdir -p /repo
 cd /repo
-rm -rf ./{*,.*}
+echo "Cleaning up any previous content of /repo if present"
+rm -rf /repo/* /repo/.*
 git init --initial-branch=main
 git config advice.detachedHead false
 git remote add origin "$repo"
