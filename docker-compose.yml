@@ -2,6 +2,8 @@ services:
   github-readme-stats:
     # Consider using a tagged release instead of "latest"
     image: ghcr.io/utkuozdemir/github-readme-stats-selfhosted:latest
+    build:
+      context: .
     container_name: github-readme-stats
     restart: unless-stopped
     ports:
